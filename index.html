@@ -141,12 +141,12 @@ socket_di = new WebSocket(get_appropriate_ws_url(),"tb-cmd-protocol");
 			document.getElementById("wsdi_statustd").style.backgroundColor = "#40ff40";
 			document.getElementById("wsdi_status").textContent = " websocket connection opened ";
 
-			socket_di.send("{ cmd: \"hello\" }");
+			socket_di.send("{ \"command\": \"getresource\", \"projectid\": 1, \"type\": \"Basc\", \"id\": 128 }");
 		} 
 
 		socket_di.onmessage =function got_packet(msg) {
-			var myObject=eval('('+msg.data+')');
 			console.log(msg);
+			var myObject=eval('('+msg.data+')');
 		} 
 
 		socket_di.onclose = function(){
